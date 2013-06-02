@@ -1,15 +1,23 @@
 /*
 
-StaticList.cpp - library for using static lists with Arduino
+StaticList - library for using static lists with Arduino
 
-this implements an static list that lives or dies like a block, it doesn't use
-memory management for allocating/deallocatin the pointers to the list elements
+Copyright notice: This file was coded in 2013 by Juanma Rodriguez and
+hereby released by him into the public domain.
 
-this implementation contains some wrappers
+
+this implements an static list that lives or dies like a block, it doesn't
+use memory management for allocating/deallocating the list elements
+
+WARNING: this is intended to use only for fairly known short lists, if you
+try to use more elements than STATIC_LIST_MAX_ELEMENTS then it forgets about
+the "older" one that not fit originating data loss.
+
+
+this implementation contains also some wrappers
     to use it as LIFO list: LIFOlist
     to use it as FIFO list: FIFOlist
 
-Coded by Juan M. Rodriguez.
 
 2013-05-26: initial version
 
@@ -42,7 +50,7 @@ void* StaticList::last(void) {
 void StaticList::add_first(void* data) {
   if (_size == STATIC_LIST_MAX_ELEMENTS) // if array cannot grow anymore...
     extract_last(); // quietly forget about the last element
-		    // (NOTE: data loss, updates size)
+		    // (WARNING: data loss, updates size)
   if ( _size > 0 )
     // make some space at the 0 position
     for (int i = _size; i > 0; i--)
@@ -56,7 +64,7 @@ void StaticList::add_first(void* data) {
 void StaticList::add_last(void* data) {
   if ( _size == STATIC_LIST_MAX_ELEMENTS ) // if array cannot grow anymore...
     extract_first(); // quietly forget about the first element 
-		     // (note: data loss, updates size)
+		     // (WARNING: data loss, updates size)
   list[_size] = data;
   _size += 1;
 }
@@ -85,10 +93,11 @@ void* StaticList::extract_last(void) {
 void* StaticList::extract_n(int n) {
   if ( _size < 1 or _size < n+1 or n < 0) return NULL;
   void* data = list[n];
-  for (int i = n; i < _size - 1; i++) {
-    // move all array elements from n+1 to size-1 to fill the space at n
+
+  // move all array from n+1 to size-1 to fill the space at n
+  for (int i = n; i < _size - 1; i++)
     list[i] = list[i+1];
-  }
+
   _size -= 1;
   list[_size] = NULL; // to allow an eventual garbage collection
   return data;
@@ -99,20 +108,20 @@ void* StaticList::extract(void* data) {
   if ( _size < 1 ) return NULL;
 
   for (int i = 0; i < _size; i++)
-    if ( list[i] == data ) // found !!
-      return extract_n(i);
-  // not found !!
-  return NULL;
+    if ( list[i] == data )
+      return extract_n(i);   // found !!
+  return NULL;   // not found !!
 }
 
 
-/****** class wrappers: StaticLIFO, StaticFIFO ***************************
+/**** class wrappers: Static LIFOlist, StaticFIFOlist *********************
 */
 
-void LIFO::push(void* data)	{ list.add_last(data); }
-void* LIFO::pop(void)		{ list.extract_last(); }
-unsigned LIFO::size(void) 	{ list.size(); }
-void FIFO::put(void* data) 	{ list.add_last(data); }
-void* FIFO::get(void)		{ list.extract_first(); }
-unsigned FIFO::size(void)	{ list.size(); }
+void	 StaticLIFOlist::push(void* data)	{ list.add_last(data); }
+void*	 StaticLIFOlist::pop(void)		{ list.extract_last(); }
+unsigned StaticLIFOlist::size(void) 		{ list.size(); }
+
+void	 StaticFIFOlist::queue(void* data) 	{ list.add_last(data); }
+void*	 StaticFIFOlist::next(void)		{ list.extract_first(); }
+unsigned StaticFIFOlist::size(void)		{ list.size(); }
 

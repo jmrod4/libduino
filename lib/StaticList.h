@@ -1,22 +1,30 @@
 /*
 
-StaticList.cpp - library for using static lists with Arduino
+StaticList - library for using static lists with Arduino
 
-this implements an static list that lives or dies like a block, it doesn't use 
-memory management for allocating/deallocatin the list elements
+Copyright notice: This file was coded in 2013 by Juanma Rodriguez and
+hereby released by him into the public domain.
 
-this implementation contains some wrappers
+
+this implements an static list that lives or dies like a block, it doesn't
+use memory management for allocating/deallocating the list elements
+
+WARNING: this is intended to use only for fairly known short lists, if you
+try to use more elements than STATIC_LIST_MAX_ELEMENTS then it forgets about
+the "older" one that not fit originating data loss.
+
+
+this implementation contains also some wrappers
     to use it as LIFO list: LIFOlist
     to use it as FIFO list: FIFOlist
 
-Coded by Juan M. Rodriguez.
 
 2013-05-26: initial version
 
 */
 
-#ifndef _list_h_
-#define _list_h_
+#ifndef LIBDUINO_STATICLIST_H_
+#define LIBDUINO_STATICLIST_H_
 
 #define STATIC_LIST_MAX_ELEMENTS 20
 
@@ -53,8 +61,8 @@ class StaticLIFOlist {
 // wrapper to StaticList 
 class StaticFIFOlist {
   public:
-    void put(void* data);
-    void* get(void);
+    void queue(void* data);
+    void* next(void);
     unsigned size(void);
   private:
     StaticList list;
