@@ -9,7 +9,7 @@ GNU GPL v3 (or above) license.
 
 Changelog
 ---------
-0.0 - still in development
+2013-06-02 - initial usable version
 
 */
 
@@ -22,18 +22,18 @@ Changelog
 // a simple class on LED dealing :)
 class LED {
   public:
-    LED(uint8_t pin);
+    LED(uint8_t pin_number);
     void off(void);
     void on(void);
-    void dim(uint8_t pwm); // 0 (completly off) to 255 (completly on)
+    void dim(uint8_t pwm_intensity); // 0 (completly off) to 255 (completly on)
     void simpleBlink(void);
-    uint8_t pin(void);
+    uint8_t pinNumber(void);
     //boolean  blinking;  // future implementation
     unsigned long blink_msec_on;
     unsigned long blink_msec_off;
   private:
-    uint8_t _pin;
-    uint8_t _pwm;
+    uint8_t _pin_number;
+    uint8_t _pwm_intensity;
 };
 
 #endif

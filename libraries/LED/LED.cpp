@@ -9,7 +9,7 @@ GNU GPL v3 (or above) license.
 
 Changelog
 ---------
-0.0 - still in development
+2013-06-02 - initial usable version
 
 */
 
@@ -23,31 +23,34 @@ Changelog
 */
 
 
-LED::LED(uint8_t pin_led) {
-  _pin = pin_led;
-  _pwm = 255;
+LED::LED(uint8_t pin_number) {
+  _pin_number = pin_number;
+  _pwm_intensity = 255;
   //blinking = false;  // future implentation
   blink_msec_on = DEFAULT_BLINK_MSEC_ON;
   blink_msec_off = DEFAULT_BLINK_MSEC_OFF;
-  pinMode(_pin, OUTPUT);
+  pinMode(_pin_number, OUTPUT);
 }
+
+// accessors
+void LED::pin_number(void)  { return _pin_number; }
 
 
 void LED::off(void) {
-  digitalWrite(_pin, LOW);
+  digitalWrite(_pin_number, LOW);
 }
 
 
 void LED::on(void) {
-  if ( _pwm == 255 )
-    digitalWrite(_pin, HIGH);
+  if ( _pwm_intensity == 255 )
+    digitalWrite(_pin_number, HIGH);
   else
-    analogWrite(_pin, _pwm);
+    analogWrite(_pin_number, _pwm_intensity);
 }
 
 
-void LED::dim(uint8_t pwm) {
-  _pwm = pwm;
+void LED::dim(uint8_t pwm_intensity) {
+  _pwm_intensity = pwm_intensity;
   on();
 }
 
