@@ -26,9 +26,9 @@ class LED {
     void off(void);
     void on(void);
     void dim(uint8_t pwm); // 0 (completly off) to 255 (completly on)
-    void blink(void);
+    void simpleBlink(void);
     uint8_t pin(void);
-    boolean  blinking;
+    //boolean  blinking;  // future implementation
     unsigned long blink_msec_on;
     unsigned long blink_msec_off;
   private:

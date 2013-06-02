@@ -1,6 +1,5 @@
 lib/Arduino.h
 lib/binary.h
-test/
 
 # vim
 *.swp

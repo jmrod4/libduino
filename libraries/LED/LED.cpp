@@ -26,9 +26,9 @@ Changelog
 LED::LED(uint8_t pin_led) {
   _pin = pin_led;
   _pwm = 255;
-  blinking = false;
+  //blinking = false;  // future implentation
   blink_msec_on = DEFAULT_BLINK_MSEC_ON;
-  blink_msec_off = DEFAULT_BLINK_MSEC_ON;
+  blink_msec_off = DEFAULT_BLINK_MSEC_OFF;
   pinMode(_pin, OUTPUT);
 }
 
@@ -52,7 +52,7 @@ void LED::dim(uint8_t pwm) {
 }
 
 
-void LED::blink(void) {
+void LED::simpleBlink(void) {
   on();
   delay(blink_msec_on);
   off();
