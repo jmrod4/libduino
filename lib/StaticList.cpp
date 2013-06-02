@@ -2,10 +2,14 @@
 
 StaticList - library for using static lists with Arduino
 
-Copyright notice: This file was coded in 2013 by Juanma Rodriguez and
-hereby released by him into the public domain.
+Copyright 2013 Juanma Rodriguez
+
+You can redistribute and/or modify this software under the terms of
+the GNU Lesser General Public License (LGPL v3 or above).
 
 
+Description
+-----------
 this implements an static list that lives or dies like a block, it doesn't
 use memory management for allocating/deallocating the list elements
 
@@ -18,8 +22,9 @@ this implementation contains also some wrappers
     to use it as LIFO list: LIFOlist
     to use it as FIFO list: FIFOlist
 
-
-2013-05-26: initial version
+Changelog
+---------
+2013-05-26: initial version, still not tested
 
 */
 
