@@ -9,7 +9,8 @@ everything I have browsed seems to be to complicated, too big, or even using
 features that aren't implemented in the Arduino C++ libraries (at least not
 yet) so I set on a:
 
-> **MISSION :**
+> **MISSION**
+>
 > to provide a set of very simple tools that will be at the same time 
 > developer friendly, elegant and highly efficient executing in the Arduino.
 
