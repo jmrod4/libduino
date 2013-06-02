@@ -20,3 +20,8 @@ Peace.
 
 --Juanma
 
+LICENSE
+-------
+
+This project is copyrighted by Juanma Rodriguez. The global license for the project 
+is the GNU GPL v3 and you can find the full text in the file LICENSE.
