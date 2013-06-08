@@ -28,9 +28,9 @@ Changelog
 
 */
 
-#include "Arduino.h"
+#include <Arduino.h>
 
-#include "list.h"
+#include <StaticList.h>
 
 /**** class: StaticList ***********************************************
 */

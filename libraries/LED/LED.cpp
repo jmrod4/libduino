@@ -9,21 +9,21 @@ GNU GPL v3 (or above) license.
 
 Changelog
 ---------
-2013-06-02 - initial usable version
+2013-06 - initial usable version
 
 */
 
 
-#include "Arduino.h"
+#include <Arduino.h>
 
-#include "LED.h"
+#include <LED.h>
 
 
 /***** class: LED *****************************************************
 */
 
 
-LED::LED(uint8_t pin_number) {
+LED::LED(byte pin_number) {
   _pin_number = pin_number;
   _pwm_intensity = 255;
   //blinking = false;  // future implentation
@@ -33,11 +33,15 @@ LED::LED(uint8_t pin_number) {
 }
 
 // accessors
-void LED::pin_number(void)  { return _pin_number; }
+byte LED::pin_number(void)  
+{ 
+  return _pin_number; 
+}
 
 
-void LED::off(void) {
-  digitalWrite(_pin_number, LOW);
+void LED::off(void) 
+{ 
+  digitalWrite(_pin_number, LOW); 
 }
 
 
@@ -49,7 +53,7 @@ void LED::on(void) {
 }
 
 
-void LED::dim(uint8_t pwm_intensity) {
+void LED::dim(byte pwm_intensity) {
   _pwm_intensity = pwm_intensity;
   on();
 }
