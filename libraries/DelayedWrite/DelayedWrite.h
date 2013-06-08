@@ -21,7 +21,7 @@ class DelayedWrite
              byte          value_to_write, 
              unsigned long initial_delay, 
              unsigned long each_millisec = 0,
-             unsigned int  times_to_write = 0);
+             unsigned      times_to_write = 0);
   private:
     byte pin;
     byte value;
