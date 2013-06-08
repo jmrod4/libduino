@@ -8,8 +8,12 @@ DelayedWrite::DelayedWrite(void)
   { clear(); }
 
 
+// leaves the pin in LOW state and then deactivates itself
 void DelayedWrite::clear(void)    
-  { pin = 0; }
+{ 
+  digitalWrite(pin, LOW);
+  pin = 0; 
+}
 
 
 byte DelayedWrite::pin_number(void)

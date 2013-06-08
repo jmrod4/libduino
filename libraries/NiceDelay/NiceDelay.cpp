@@ -12,7 +12,7 @@ int NiceDelay::get_free(void)
 }
 
 
-void NiceDelay::remove(pin)
+void NiceDelay::remove(byte pin)
 {
   for (int i = 0; i < MAX_DELAYED_WRITES; i++)
     if (delayed_writes[i].pin_number() == pin)
@@ -22,10 +22,10 @@ void NiceDelay::remove(pin)
 
 void NiceDelay::delay(unsigned long millisec)
 {
-  while (millisec > NICE_DELAY_GRANULARITY_MSEC)
+  while (millisec > NICE_DELAY_GRANULARITY_MILLISEC)
   {
-    this.delay(NICE_DELAY_GRANULARITY_MSEC);
-    millisec -= NICE_DELAY_GRANULARITY_MSEC;
+    this->delay(NICE_DELAY_GRANULARITY_MILLISEC);
+    millisec -= NICE_DELAY_GRANULARITY_MILLISEC;
   }  
 
   unsigned long current_time = millis();
@@ -34,18 +34,21 @@ void NiceDelay::delay(unsigned long millisec)
     delayed_writes[i].written(current_time);
   millisec -= millis() - current_time;
   if (millisec > 0)
-    std::delay(millisec);
+    delayMicroseconds(millisec*1000U);
 }
 
 
-void NiceDelay::add(unsigned long current_time,
-                    byte          pin_number, 
-                    byte          value_to_write, 
-                    unsigned long initial_delay, 
-                    unsigned long each_millisec = 0,
-                    unsigned int  times_to_write = 0)
+void NiceDelay::addWrite
+(
+  unsigned long current_time,
+  byte          pin_number, 
+  byte          value_to_write, 
+  unsigned long initial_delay, 
+  unsigned long each_millisec,
+  unsigned int  times_to_write
+)
 {
-  int i = get_free()
+  int i = get_free();
   // FIXME: if i==-1 no free spaces, and does nothing
   if ( i < 0 ) 
     return;

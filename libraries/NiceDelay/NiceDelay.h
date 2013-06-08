@@ -7,22 +7,26 @@
 #define MAX_DELAYED_WRITES  20
 #endif
 
-#ifndef NICE_DELAY_GRANULARITY_MSEC
-#define NICE_DELAY_GRANULARITY_MSEC 3
+// WARNING: granularity should be equal or less than 16 milliseconds
+#ifndef NICE_DELAY_GRANULARITY_MILLISEC
+#define NICE_DELAY_GRANULARITY_MILLISEC 3
 #endif
 
-#include <DelayedWrite.h>
+#include "../DelayedWrite/DelayedWrite.h"
 
 class NiceDelay 
 {
   public:
-    void add(unsigned long current_time,
-             byte          pin_number, 
-             byte          value_to_write, 
-             unsigned long initial_delay, 
-             unsigned long each_millisec = 0,
-             unsigned int  times_to_write = 0);
-    void remove(byte pin_number)
+    void addWrite
+    (
+      unsigned long current_time,
+      byte          pin_number, 
+      byte          value_to_write, 
+      unsigned long initial_delay, 
+      unsigned long each_millisec = 0,
+      unsigned int  times_to_write = 0
+    );
+    void remove(byte pin_number);
     void delay(unsigned long millisec);
   private:
     DelayedWrite delayed_writes[MAX_DELAYED_WRITES];

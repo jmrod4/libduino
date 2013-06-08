@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+#include <DelayedWrite.h>
 #include <NiceDelay.h>
 
 /**** main **********************************************************/
@@ -11,8 +12,8 @@ NiceDelay nice;
 void setup(void)
 {
   unsigned long current_time = millis();
-  nice.add(current_time, 13, HIGH, 1000, 0);
-  nice.add(current_time, 13, LOW,  1000, 200);
+  nice.addWrite(current_time, 13, HIGH, 0, 1000);
+  nice.addWrite(current_time, 13, LOW,  200, 1000);
 }
 
 
