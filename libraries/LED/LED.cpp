@@ -33,7 +33,7 @@ LED::LED(byte pin_number) {
 }
 
 // accessors
-byte LED::pin_number(void)  
+byte LED::pinNumber(void)  
 { 
   return _pin_number; 
 }
