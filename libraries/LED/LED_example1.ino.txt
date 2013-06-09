@@ -22,7 +22,7 @@ Tested behaviour
 * the internal led blinks 10 times then 
 * the other led progressively increases in brightness and
   then decreases also progressively, completing 5 cycles.
-then repeats
+* repeat
 
 
 Changelog
