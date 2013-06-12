@@ -13,10 +13,22 @@ Changelog
 
 */
 
+/*
+WARNING: Due to a pitfall in the Arduino IDE, a library cannot include another one
+so you must add the following lines to your sketch:
 
 #include <Arduino.h>
-
+#include <DelayedWrite.h>
+#include <NiceDelay.h>
 #include <LED.h>
+*/
+
+
+#include <Arduino.h>
+#include <NiceDelay.h>  
+#include <LED.h>
+
+
 
 
 /***** class: LED *****************************************************
@@ -33,7 +45,7 @@ LED::LED(byte pin_number) {
 }
 
 // accessors
-byte LED::pinNumber(void)  
+byte LED::pin_number(void)  
 { 
   return _pin_number; 
 }
@@ -54,12 +66,12 @@ void LED::on(void) {
 
 
 void LED::dim(byte pwm_intensity) {
-  _pwm_intensity = pwm_intensity;
-  on();
+  _pwm_intensity = pwm_intensity; // change the previous intensity and
+  on(); // lits the LED at the desired intensity immediatly !
 }
 
 
-void LED::simpleBlink(void) {
+void LED::simple_blink(void) {
   on();
   delay(blink_msec_on);
   off();

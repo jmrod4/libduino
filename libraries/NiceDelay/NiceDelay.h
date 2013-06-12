@@ -47,8 +47,8 @@ class NiceDelay
     void remove(byte pin_number);
     void delay(unsigned long millisec);
   private:
-    DelayedWrite delayed_writes[MAX_DELAYED_WRITES];
-    int get_free(void);
+    DelayedWrite _delayed_writes[MAX_DELAYED_WRITES];
+    int _get_free(void);
 };
 
 #endif

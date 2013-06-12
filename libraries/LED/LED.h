@@ -26,8 +26,8 @@ class LED {
     void off(void);
     void on(void);
     void dim(byte pwm_intensity);  // 0 (completly off) to 255 (completly on)
-    void simpleBlink(void);  // do a single blink cycle
-    byte pinNumber(void);
+    void simple_blink(void);  // do a single blink cycle
+    byte pin_number(void);
     unsigned long blink_msec_on;
     unsigned long blink_msec_off;
     //boolean  blinking;  // future implementation
