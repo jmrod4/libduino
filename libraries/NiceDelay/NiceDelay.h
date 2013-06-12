@@ -1,3 +1,19 @@
+/*
+
+NiceDelay - lets you program delayed and repetitive tasks on the Arduino
+            currently implementing: write
+
+Copyright 2013 Juanma Rodriguez. 
+
+You can redistribute and/or modify this software under the terms of 
+GNU GPL v3 (or above) license.
+
+Changelog
+---------
+2013-06 - started coding :)
+
+*/
+
 /*** class: NiceDelay ***************************************************/
 
 #ifndef LIBDUINO_NICE_DELAY_H_
@@ -12,7 +28,9 @@
 #define NICE_DELAY_GRANULARITY_MILLISEC 3
 #endif
 
-#include "../DelayedWrite/DelayedWrite.h"
+
+#include <DelayedWrite.h>
+
 
 class NiceDelay 
 {

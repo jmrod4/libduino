@@ -1,3 +1,18 @@
+/*
+
+NiceDelay - lets you program delayed and repetitive tasks on the Arduino
+            currently implementing: write
+
+Copyright 2013 Juanma Rodriguez. 
+
+You can redistribute and/or modify this software under the terms of 
+GNU GPL v3 (or above) license.
+
+Changelog
+---------
+2013-06 - started coding :)
+
+*/
 #include <Arduino.h>
 
 #include <NiceDelay.h>
@@ -35,6 +50,8 @@ void NiceDelay::delay(unsigned long millisec)
   millisec -= millis() - current_time;
   if (millisec > 0)
     delayMicroseconds(millisec*1000U);
+  else
+    delayMicroseconds(1000U);
 }
 
 
