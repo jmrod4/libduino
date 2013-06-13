@@ -2,14 +2,15 @@
 
 LED - simple class for dealing with LEDs in the Arduino
 
-Copyright 2013 Juanma Rodriguez.
+Copyright 2013 Juanma Rodriguez. 
 
-You can redistribute and/or modify this software under the terms of
-GNU GPL v3 (or above) license.
+This file is part of the [libduino project](github.com/jmrod4/libduino) 
+You can redistribute and/or modify this software under the terms of 
+GNU GPL v3 license.
 
 Changelog
 ---------
-2013-06 - initial usable version
+2013-06: initial usable version
 
 */
 

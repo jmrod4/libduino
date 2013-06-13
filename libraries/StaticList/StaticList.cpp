@@ -4,8 +4,9 @@ StaticList - library for using static lists with Arduino
 
 Copyright 2013 Juanma Rodriguez
 
+This file is part of the [libduino project](github.com/jmrod4/libduino)
 You can redistribute and/or modify this software under the terms of
-the GNU Lesser General Public License (LGPL v3 or above).
+the GNU Lesser General Public License (LGPL v3).
 
 
 Description

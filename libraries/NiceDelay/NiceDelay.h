@@ -5,12 +5,13 @@ NiceDelay - lets you program delayed and repetitive tasks on the Arduino
 
 Copyright 2013 Juanma Rodriguez. 
 
+This file is part of the [libduino project](github.com/jmrod4/libduino) 
 You can redistribute and/or modify this software under the terms of 
-GNU GPL v3 (or above) license.
+GNU GPL v3 license.
 
 Changelog
 ---------
-2013-06 - started coding :)
+2013-06: started coding :)
 
 */
 
@@ -23,7 +24,7 @@ Changelog
 #define MAX_DELAYED_WRITES  20
 #endif
 
-// WARNING: granularity should be equal or less than 16 milliseconds
+// WARNING: granularity can't be bigger than 16 milliseconds
 #ifndef NICE_DELAY_GRANULARITY_MILLISEC
 #define NICE_DELAY_GRANULARITY_MILLISEC 3
 #endif

@@ -1,3 +1,19 @@
+/*
+
+DelayedWrite - lets you set parameters for a cyclic write operation and 
+               perform it when it's due
+ 
+Copyright 2013 Juanma Rodriguez. 
+
+This file is part of the [libduino project](github.com/jmrod4/libduino) 
+You can redistribute and/or modify this software under the terms of 
+GNU GPL v3 license.
+
+Changelog
+---------
+2013-06: started coding :)
+
+*/
 
 #include <Arduino.h>
 
@@ -21,10 +37,13 @@ byte DelayedWrite::pin_number(void)
 
 
 void DelayedWrite::write(void)
+// this function just writes the value inmediately
 {
   if ( pin == 0 ) 
     return;
 
+  // FIXME: if you are using a continuous PWM and try to write 1 you will 
+  // get an unexpected result as the output will be like 255 was written
   if ( value == HIGH || value == LOW )
     digitalWrite(pin, value); // digital
   else
@@ -33,6 +52,8 @@ void DelayedWrite::write(void)
 
 
 boolean DelayedWrite::written(unsigned long current_time)
+// WARNING: no delayed write is done unless written is called!!
+// it returns if the value was actually written
 {
   if ( pin == 0 ) 
     return false;
