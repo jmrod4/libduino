@@ -52,12 +52,13 @@ void prints(int value)
 void setup(void)
 {
    Serial.begin(115200);
+   pushbutton.set_debounce(10); // millisec
 }
 
 void loop(void)
 {
    Serial.println(pot.read());
-   Serial.println(pot.is_on());
+   Serial.println(pot.is_on()); // "converts" the analog input to digital value 0 or 1
   
    if ( pushbutton.is_on() )
    {
