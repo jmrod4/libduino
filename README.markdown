@@ -1,10 +1,19 @@
 LIBDUINO
 ========
 
-These are a set of libraries written in the Arduino C++ variant and are 
+A set of libraries written in the Arduino C++ variant and that are 
 intended to run in the Arduino IDE. 
 
-Is there a need of yet another library for Arduino? Well, maybe not, but 
+Copyright (c) 2013 Juan Manuel Rodriguez Ibañez
+
+You can redistribute and/or modify this software under the terms of the
+license GNU GPL v3 or later. See the license full text in the included file
+LICENSE.
+
+Why another library
+-------------------
+
+Is there a need of yet another library for Arduino? Well, surely not, but 
 everything I have browsed seems to be to complicated, too big, or even using 
 features that aren't implemented in the Arduino C++ libraries (at least not
 yet) so I set on a:
@@ -22,11 +31,5 @@ Peace.
 --Juanma
 
 
-LICENSE
--------
 
-This project is copyrighted by Juanma Rodriguez. 
-
-The global license for the project is the GNU GPL v3. You can find the 
-license full text in the file LICENSE.
 
